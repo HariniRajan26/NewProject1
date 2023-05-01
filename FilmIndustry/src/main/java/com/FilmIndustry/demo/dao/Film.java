@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 public class Film {
 
 	@Id
-	private int filmid;
+	private int filmId;
 	private String title;
 	private long budget;
 	private String originalLanguage;
@@ -17,11 +17,11 @@ public class Film {
 	private Date releaseDate;
 	private int runtime;
 	private long revenue;
-	public int getFilmid() {
-		return filmid;
+	public int getFilmId() {
+		return filmId;
 	}
-	public void setFilmid(int filmid) {
-		this.filmid = filmid;
+	public void setFilmId(int filmId) {
+		this.filmId = filmId;
 	}
 	public String getTitle() {
 		return title;
