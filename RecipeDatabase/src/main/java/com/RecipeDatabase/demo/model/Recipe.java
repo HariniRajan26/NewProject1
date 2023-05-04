@@ -1,9 +1,13 @@
 package com.RecipeDatabase.demo.model;
 
+
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-//import jakarta.persistence.JoinColumn;
-//import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Recipe {
@@ -16,29 +20,14 @@ public class Recipe {
 	private String cuisine;
 	private int prepTime;
 	private int serving;
-//	@ManyToOne
-//	@JoinColumn
-//	private Registration userId;
+
+	@OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "recipe_id")
+ 	private List<Ingredients> ingredientsInfo;
 	
 	public Recipe() {
 		super();
 	}
-	
-	
-	
-	public Recipe(int recipeId, int categoryId, String recipeName, String description, String cuisine, int prepTime,
-		int serving) {
-	super();
-	this.recipeId = recipeId;
-	this.categoryId = categoryId;
-	this.recipeName = recipeName;
-	this.description = description;
-	this.cuisine = cuisine;
-	this.prepTime = prepTime;
-	this.serving = serving;
-}
-
-
 
 	public int getRecipeId() {
 		return recipeId;
@@ -46,12 +35,6 @@ public class Recipe {
 	public void setRecipeId(int recipeId) {
 		this.recipeId = recipeId;
 	}
-//	public Registration getUserId() {
-//		return userId;
-//	}
-//	public void setUserId(Registration userId) {
-//		this.userId = userId;
-//	}
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -88,6 +71,16 @@ public class Recipe {
 	public void setServing(int serving) {
 		this.serving = serving;
 	}
+
+	public List<Ingredients> getIngredientsInfo() {
+		return ingredientsInfo;
+	}
+
+	public void setIngredientsInfo(List<Ingredients> ingredientsInfo) {
+		this.ingredientsInfo = ingredientsInfo;
+	}
+
+	
 	
 	
 }

@@ -18,6 +18,8 @@ import com.RecipeDatabase.demo.model.Login;
 import com.RecipeDatabase.demo.model.Recipe;
 import com.RecipeDatabase.demo.model.Registration;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class RecipeService {
 
@@ -85,6 +87,54 @@ public class RecipeService {
 		return recipes.getContent();
 	}
 	
+	//Derived queries
+	public List<Recipe> findByCategoryId(int categoryId)
+	{
+		return recipeRepository.findByCategoryId(categoryId);
+	}
+	
+	
+	//Query positional
+	public List<Recipe> getRecipeByCuisine(String cuisine, String recipeName)
+	{
+		return recipeRepository.getRecipeByCuisine(cuisine, recipeName);
+	}
+
+	
+	//named
+	public List<Recipe> getRecipeByCuisine(String cuisine)
+	{
+		return recipeRepository.getRecipeByCuisine(cuisine);
+	}
+	
+	
+	//native
+	public List<Recipe> fetchRecipeByServing(int serving)
+	{
+		return recipeRepository.fetchRecipeByServing(serving);
+	}
+	
+	
+	//DML
+	@Transactional
+	public int deleteRecipeByName(String recipeName)
+	{
+		return recipeRepository.deleteRecipeByName(recipeName);
+	}
+	
+//	@Transactional
+//	public int deleteIngreByName(String ingredientName)
+//	{
+//		return recipeRepository.deleteIngreByName(ingredientName);
+//	}
+	
+	@Transactional
+	public int updateRecipeByName(String cuisine, String recipeName)
+	{
+		return recipeRepository.updateRecipeByName(cuisine,recipeName);
+	}
+	
+
 	
 	
 	

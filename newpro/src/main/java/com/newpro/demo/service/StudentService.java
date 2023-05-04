@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import com.newpro.demo.dao.Student;
 import com.newpro.demo.dao.StudentRepository;
 
+import jakarta.transaction.Transactional;
+
 //import com.newpro.demo.controller.StudentService;
 
 @Service
@@ -120,5 +122,28 @@ public class StudentService {
 		return studRepository.findByDepartment(department);
 	}
 
+	
+	
+	
+	//Query
+	@Transactional
+	public int deleteStudentByName(String name)
+	{
+		return studRepository.deleteStudentByName(name);
+	}
+	
+	@Transactional
+	public int updateStudentByName(String department, String name)
+	{
+		return studRepository.updateStudentsByName(department,name);
+	}
+
+
+	public List<Student> fetchStudentByMail(String email) 
+	{
+		return studRepository.fetchStudentByMail(email);
+	}
+	
+	
 	
 }

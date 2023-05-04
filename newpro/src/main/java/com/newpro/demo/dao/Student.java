@@ -1,16 +1,19 @@
 package com.newpro.demo.dao;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Student {
 
 	@Id
+	@GeneratedValue
 	private int regno;
 	private String name;
 	private String department;
 	private String email;
+	private int studId;
 	public int getRegno() {
 		return regno;
 	}
@@ -35,5 +38,12 @@ public class Student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public int getStudId() {
+		return studId;
+	}
+	public void setStudId(int studId) {
+		this.studId = studId;
+	}
+	
 	
 }

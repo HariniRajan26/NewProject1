@@ -17,14 +17,16 @@ import com.RecipeDatabase.demo.model.Recipe;
 import com.RecipeDatabase.demo.model.Registration;
 import com.RecipeDatabase.demo.service.RecipeService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 
 @RestController
 public class RecipeController {
 
 	@Autowired
 	RecipeService recipeService;
-//	RegistrationService regService;
 	
+	@Tag(name= "Get", description="get data")
 	@GetMapping(value="/fetchRecipe")
 	public List<Recipe> getAllRecipe()
 	{
@@ -33,6 +35,7 @@ public class RecipeController {
 	}
 	//http://localhost:9080/saveStudent
 	
+	@Tag(name= "Post", description="post data")
 	@PostMapping(value="/saveRecipe")
 	public Recipe saveRecipe(@RequestBody Recipe r)
 	{
@@ -40,6 +43,7 @@ public class RecipeController {
 		
 	}
 	
+	@Tag(name= "Put", description="update data")
 	@PutMapping(value="/updateRecipe/{regno}")
 	public Recipe updateRecipe(@RequestBody Recipe r, @PathVariable int recipeId)
 	{
@@ -47,6 +51,7 @@ public class RecipeController {
 		
 	}
 	
+	@Tag(name= "Delete", description="delete Recipe")
 	@DeleteMapping("/deleteRecipe/{recipeId}")
 	public void deleteRecipe(@PathVariable("recipeId") int recipeId)
 	{
@@ -80,6 +85,12 @@ public class RecipeController {
 	}
 	
 	
+
+
+	
+	
+	
+	
 	
 	
 	//For Login
@@ -101,6 +112,7 @@ public class RecipeController {
 		System.out.println(l.getUsername());
 		return recipeService.validateUserLogin(l.getUsername(),l.getPassword());
 	}
+	
 	
 	
 	
@@ -136,4 +148,9 @@ public class RecipeController {
 	{
 		return recipeService.pagingAndSortingReg(offset,pageSize,field);
 	}
+	
+	
+
+	
+	
 }
