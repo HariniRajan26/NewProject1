@@ -1,12 +1,8 @@
 package com.RecipeDatabase.demo.model;
 
-//import java.util.List;
-//
-//import jakarta.persistence.CascadeType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-//import jakarta.persistence.JoinColumn;
-//import jakarta.persistence.OneToMany;
 
 @Entity
 public class Ingredients {
@@ -17,31 +13,14 @@ public class Ingredients {
 	private float quantity;
 	private String type;
 	private String unit;
-//
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "recipeId")
-// 	private List<Recipe> recipe;
-	
-	
-//	public String getRecipeName() {
-//		return recipeName;
-//	}
-//	public void setRecipeName(String recipeName) {
-//		this.recipeName = recipeName;
-//	}
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-//	public int getIngredientId() {
-//		return IngredientId;
-//	}
-//	public void setIngredientId(int ingredientId) {
-//		IngredientId = ingredientId;
-//	}
+
 	public String getIngredientName() {
 		return IngredientName;
 	}

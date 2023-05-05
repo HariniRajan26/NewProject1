@@ -86,7 +86,84 @@ public class RecipeController {
 	
 	
 
+	//derived queries
+	@GetMapping("/getBycategory/{categoryId}")
+	public List<Recipe> findByCategoryId(@PathVariable int categoryId)
+	{
+		return recipeService.findByCategoryId(categoryId);
+	}
+		
+		
+	//Query positional
+	@GetMapping("/getRecipeByCuisine/{cuisine}/{recipeName}")
+	public List<Recipe> getRecipeByCuisine(@PathVariable String cuisine,@PathVariable String recipeName)
+	{
+		return recipeService.getRecipeByCuisine(cuisine, recipeName);
+	}
+		
 
+		
+
+	//Named
+	@GetMapping("/getByCuisine/{cuisine}")
+	public List<Recipe> getRecipeByCuisine(@PathVariable String cuisine)
+	{
+		return recipeService.getRecipeByCuisine(cuisine);
+	}
+		
+		
+	//native
+	@GetMapping("/getByServing/{serving}")
+	public List<Recipe> fetchRecipeByServing(@PathVariable int serving)
+	{
+		return recipeService.fetchRecipeByServing(serving);
+	}
+		
+		
+	//DML
+	@DeleteMapping("/deleteRecipeByName/{recipeName}")
+	public String deleteRecipeByName(@PathVariable String recipeName)
+	{
+		int result=recipeService.deleteRecipeByName(recipeName);
+		if(result>0)
+		{
+			return "Recipe record deleted";
+		}
+		else
+		{
+			return "Problem occured while deleting";
+		}
+	}
+		
+//		@DeleteMapping("/deleteIngreByName/{ingredientName}")
+//		public String deleteIngreByName(@PathVariable String ingredientName)
+//		{
+//			int result=recipeService.deleteIngreByName(ingredientName);
+//			if(result>0)
+//			{
+//				return "Ingredient record deleted";
+//			}
+//			else
+//			{
+//				return "Problem occured while deleting";
+//			}
+//		}
+
+	@PutMapping("/updateRecipeByName/{cuisine}/{recipeName}")
+	public String updateRecipeByName(@PathVariable String cuisine,@PathVariable String recipeName)
+	{
+		int result=recipeService.updateRecipeByName(cuisine,recipeName);
+		if(result>0)
+		{
+			return "Recipe record updated";
+		}
+		else
+		{
+			return "Problem occured while updating";
+		}
+	}
+	
+	
 	
 	
 	
@@ -112,6 +189,8 @@ public class RecipeController {
 		System.out.println(l.getUsername());
 		return recipeService.validateUserLogin(l.getUsername(),l.getPassword());
 	}
+	
+
 	
 	
 	
